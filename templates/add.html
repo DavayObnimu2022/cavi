@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="add-wrapper">
+    <div class="add-form">
+        <div class="add-header">Добавление</div>
+        
+        <!-- ИЗОБРАЖЕНИЕ И ВИДЕО -->
+        <div class="media-vertical">
+            <div class="media-box">
+                <div class="media-icon">🖼️</div>
+                <span>Изображение</span>
+            </div>
+            <div class="media-box">
+                <div class="media-icon">🎬</div>
+                <span>Видео</span>
+            </div>
+        </div>
+        
+        {% if service %}
+            <!-- ВОЗРАСТНАЯ ГРУППА -->
+            <div class="field-group">
+                <label>Возрастная группа</label>
+                <select class="field-select">
+                    <option value="20-30 лет" {% if service.age_group == "20-30 лет" %}selected{% endif %}>20-30 лет</option>
+                    <option value="30-40 лет" {% if service.age_group == "30-40 лет" %}selected{% endif %}>30-40 лет</option>
+                    <option value="35-45 лет" {% if service.age_group == "35-45 лет" %}selected{% endif %}>35-45 лет</option>
+                    <option value="40-50 лет" {% if service.age_group == "40-50 лет" %}selected{% endif %}>40-50 лет</option>
+                    <option value="45-55 лет" {% if service.age_group == "45-55 лет" %}selected{% endif %}>45-55 лет</option>
+                    <option value="50-60 лет" {% if service.age_group == "50-60 лет" %}selected{% endif %}>50-60 лет</option>
+                    <option value="55-65 лет" {% if service.age_group == "55-65 лет" %}selected{% endif %}>55-65 лет</option>
+                    <option value="60+ лет" {% if service.age_group == "60+ лет" %}selected{% endif %}>60+ лет</option>
+                </select>
+            </div>
+
+            <!-- АРТЕРИАЛЬНАЯ ГИПЕРТЕНЗИЯ - ТЕКСТ ВНУТРИ ПОЛЯ -->
+            <div class="field-group toggle-group">
+                <div class="toggle-wrapper">
+                    <span class="toggle-label-text">Артериальная гипертензия</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" {% if service.hypertension == "Да" %}checked{% endif %}>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- САХАРНЫЙ ДИАБЕТ - ТЕКСТ ВНУТРИ ПОЛЯ -->
+            <div class="field-group toggle-group">
+                <div class="toggle-wrapper">
+                    <span class="toggle-label-text">Сахарный диабет</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" {% if service.diabetes == "Да" %}checked{% endif %}>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+        {% else %}
+            <p style="color: #8e9eab; text-align: center; padding: 20px;">Нет черновиков</p>
+        {% endif %}
+
+        <button class="save-btn">Сохранить</button>
+    </div>
+</div>
+{% endblock %}

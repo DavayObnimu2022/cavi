@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="feed-wrapper">
+    <div class="feed-card">
+        {% if service %}
+            <div class="video-wrapper">
+                <video autoplay muted loop playsinline>
+                    <source src="{{ service.video }}" type="video/mp4">
+                </video>
+                
+                <!-- ЛЕВЫЙ ВЕРХНИЙ УГОЛ: ● CAVI Мониторинг -->
+                <div class="video-top-left">
+                    <span class="cavi-dot">●</span>
+                    <span class="cavi-logo">CAVI Мониторинг</span>
+                </div>
+                
+                <!-- ПРАВЫЙ ВЕРХНИЙ УГОЛ: ИКОНКА ЗВУКА -->
+                <div class="video-top-right">
+                    <svg class="sound-icon" viewBox="0 0 24 24" width="20" height="20" fill="#ffffff">
+                        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                    </svg>
+                </div>
+
+                <!-- СТАРЫЙ ТЕКСТ (СВЕРХУ) -->
+                <div class="patient-text-top">
+                    <div class="patient-name">{{ service.title }}</div>
+                    <div class="patient-details">
+                        <span>Гипертензия: {{ service.hypertension }}</span>
+                        <span>Диабет: {{ service.diabetes }}</span>
+                    </div>
+                </div>
+
+                <!-- ЛАЙК (КРУГ) -->
+                <a href="#" class="like-circle">
+                    <span class="like-icon">❤️</span>
+                    <span class="like-count">{{ service.likes }}</span>
+                </a>
+
+                <!-- СЛЕДУЮЩИЙ (КРУГ) -->
+                <a href="/?id={{ service.id }}&next=true" class="next-circle">
+                    <span class="next-icon">→</span>
+                </a>
+
+                <!-- НОВЫЙ ТЕКСТ (ВНИЗУ) - ЗАГОЛОВОК + ОПИСАНИЕ -->
+                <div class="text-bottom">
+                    <div class="text-title">{{ service.subtitle }}</div>
+                    <div class="text-description">{{ service.description }}</div>
+                </div>
+            </div>
+        {% else %}
+            <p style="color: #8e9eab; padding: 20px; text-align: center;">Нет доступных услуг</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

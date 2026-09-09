@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="grid-header">
+    <h3>Плитка</h3>
+</div>
+
+<div class="filter-row">
+    <form method="get" action="/grid" class="filter-form-full">
+        <div class="filter-wrapper-full">
+            <span class="search-icon-full">🔍</span>
+            <input type="text" name="filter_age" class="filter-input-full" 
+                   placeholder="Возраст > 50" 
+                   value="{{ filter_age or '' }}">
+        </div>
+    </form>
+</div>
+
+<div class="grid-scroll-area">
+    <div class="grid-container">
+        {% for service in services %}
+            <a href="/?id={{ service.id }}" class="grid-card">
+                <img src="{{ service.image }}" alt="{{ service.title }}">
+                <div class="card-info">
+                    <h4>{{ service.title }}</h4>
+                    <div class="meta">
+                        <span>{{ service.age_group }}</span>
+                        <span class="likes">❤️ {{ service.likes }}</span>
+                    </div>
+                </div>
+            </a>
+        {% else %}
+            <p style="color: #8e9eab; grid-column: span 2; text-align: center; padding: 30px 0;">
+                Нет услуг
+            </p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
