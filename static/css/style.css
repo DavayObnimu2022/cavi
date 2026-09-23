@@ -181,156 +181,6 @@ body {
 .feed-card .video-top-right .sound-icon { opacity: 0.8; display: block; }
 
 /* ============================================
-   ПАРАМЕТРЫ УЗКО (СПРАВА)
-   ============================================ */
-.feed-card .patient-text-top {
-    position: absolute;
-    bottom: 272px;
-    right: 16px;                /* ← прижаты к правому краю */
-    z-index: 10;
-    background: rgba(0, 0, 0, 0.502);
-    backdrop-filter: blur(4px);
-    padding: 8px 12px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    max-width: 150px;
-}
-
-.feed-card .patient-name {
-    font-size: 14px;
-    font-weight: 700;
-    color: #fff;
-}
-
-.feed-card .patient-details {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-}
-
-.feed-card .patient-details span {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-/* ============================================
-   ОБЕ ИКОНКИ СПРАВА (ЛАЙК И СЛЕДУЮЩИЙ)
-   ============================================ */
-.feed-card .right-icons {
-    position: absolute;
-    bottom: 100px;
-    right: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    z-index: 10;
-}
-
-.feed-card .like-circle {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    background: rgba(0, 0, 0, 0.502);
-    backdrop-filter: blur(4px);
-    border-radius: 50%;
-    width: 52px;
-    height: 52px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.3s ease;
-}
-
-.feed-card .like-circle:hover {
-    background: rgba(0, 0, 0, 0.7);
-    transform: scale(1.05);
-}
-
-.feed-card .like-circle .like-icon {
-    font-size: 18px;
-    color: #ff6b81;
-    line-height: 1;
-}
-
-.feed-card .like-circle .like-count {
-    font-size: 10px;
-    font-weight: 600;
-    color: #fff;
-    margin-top: 1px;
-}
-
-.feed-card .next-circle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    background: rgba(0, 0, 0, 0.502);
-    backdrop-filter: blur(4px);
-    border-radius: 50%;
-    width: 52px;
-    height: 52px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.3s ease;
-}
-
-.feed-card .next-circle:hover {
-    background: rgba(0, 0, 0, 0.7);
-    transform: scale(1.05);
-}
-
-.feed-card .next-circle .next-icon {
-    font-size: 24px;
-    color: #fff;
-    font-weight: 300;
-    line-height: 1;
-}
-
-/* ============================================
-   ОПИСАНИЕ ВНИЗУ
-   ============================================ */
-.feed-card .text-bottom {
-    position: absolute;
-    bottom: 20px;
-    left: 16px;
-    right: 16px;
-    z-index: 10;
-    background: rgba(0, 0, 0, 0.502);
-    backdrop-filter: blur(4px);
-    padding: 12px 16px;
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.feed-card .text-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 2px; }
-
-.feed-card .text-description {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.4;
-    display: -webkit-box;
-    display: box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-    box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.feed-card .more-link {
-    display: inline-block;
-    margin-top: 4px;
-    font-size: 12px;
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 600;
-}
-
-/* ============================================
    СТРАНИЦА 2: ДОБАВЛЕНИЕ
    ============================================ */
 .add-form {
@@ -371,8 +221,6 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     cursor: pointer;
     transition: all 0.3s ease;
-    user-select: none;
-    position: relative;
 }
 
 .add-form .media-box:hover {
@@ -382,15 +230,6 @@ body {
 
 .add-form .media-box .media-icon { font-size: 26px; margin-bottom: 6px; color: #4fc3f7; }
 .add-form .media-box span { font-weight: 500; color: #1a1a2e; font-size: 14px; }
-
-.add-form .media-box .file-name {
-    display: block;
-    margin-top: 6px;
-    font-size: 12px;
-    color: var(--text-gray);
-    font-weight: 400;
-    word-break: break-all;
-}
 
 .add-form .field-group { margin-bottom: 16px; }
 
@@ -402,66 +241,11 @@ body {
     font-weight: 500;
 }
 
-.add-form .field-input,
-.add-form .field-textarea,
-.add-form input[type="number"],
-.add-form input[type="text"],
-.add-form textarea {
-    display: block !important;
-    width: 100% !important;
-    background-color: #ffffff !important;
-    color: #1a1a2e !important;
-    font-size: 14px !important;
-    font-family: inherit !important;
-    padding: 14px 16px !important;
-    border: 1px solid #e8ecf1 !important;
-    border-radius: 14px !important;
-    outline: none !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
-    min-height: 50px !important;
-    line-height: 1.4 !important;
-    transition: border-color 0.3s, box-shadow 0.3s !important;
-    -webkit-appearance: none !important;
-    -moz-appearance: none !important;
-    appearance: none !important;
-}
-
-.add-form input[type="number"]::-webkit-outer-spin-button,
-.add-form input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none !important;
-    appearance: none !important;
-    margin: 0 !important;
-}
-
-.add-form input[type="number"] {
-    -moz-appearance: textfield !important;
-    appearance: textfield !important;
-}
-
-.add-form .field-input:focus,
-.add-form .field-textarea:focus,
-.add-form input[type="number"]:focus,
-.add-form textarea:focus {
-    border-color: #4fc3f7 !important;
-    box-shadow: 0 0 0 3px rgba(79, 195, 247, 0.15), 0 2px 8px rgba(0, 0, 0, 0.04) !important;
-}
-
-.add-form textarea.field-textarea,
-.add-form textarea {
-    min-height: 100px !important;
-    resize: vertical !important;
-    padding: 14px 16px !important;
-}
-
-.add-form input::placeholder,
-.add-form textarea::placeholder {
-    color: #8e9eab !important;
-    opacity: 1 !important;
-}
-
 /* ============================================
-   СТРАНИЦА 3: ПЛИТКА
+   СТРАНИЦА 3: ПЛИТКА (как в ЛР-1 + Удалить)
    ============================================ */
+
+/* ЗАГОЛОВОК */
 .grid-header {
     display: flex;
     justify-content: space-between;
@@ -471,8 +255,13 @@ body {
     flex-shrink: 0;
 }
 
-.grid-header h3 { color: var(--text-dark); font-size: 20px; font-weight: 700; }
+.grid-header h3 {
+    color: var(--text-dark);
+    font-size: 20px;
+    font-weight: 700;
+}
 
+/* КОНТЕЙНЕР ФИЛЬТРА */
 .filter-row { margin-bottom: 14px; flex-shrink: 0; }
 .filter-form-full { width: 100%; }
 
@@ -492,33 +281,37 @@ body {
     margin-bottom: 16px;
 }
 
-.val-badge {
-    display: inline-block;
-    background: #e8f6fd;
+.filter-labels #min-val,
+.filter-labels #max-val {
     color: #0EA5E9;
-    padding: 2px 10px;
-    border-radius: 10px;
     font-weight: 700;
-    min-width: 30px;
-    text-align: center;
 }
 
+/* ============================================
+   ДВА ОТДЕЛЬНЫХ СЛАЙДЕРА (ОТ / ДО)
+   ============================================ */
+
+/* СТРОКА СЛАЙДЕРА */
 .slider-row {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     margin-bottom: 12px;
 }
 
-.slider-row:last-of-type { margin-bottom: 18px; }
+.slider-row:last-of-type {
+    margin-bottom: 18px;
+}
 
+/* МЕТКА "ОТ" / "ДО" */
 .slider-label {
     font-size: 13px;
     color: #8e9eab;
     font-weight: 600;
-    min-width: 24px;
+    min-width: 22px;
 }
 
+/* КОНТЕЙНЕР ДЛЯ INPUT */
 .slider-line {
     position: relative;
     flex: 1;
@@ -527,6 +320,7 @@ body {
     align-items: center;
 }
 
+/* INPUT RANGE */
 .slider-line input[type="range"] {
     width: 100%;
     height: 6px;
@@ -539,6 +333,7 @@ body {
     cursor: pointer;
 }
 
+/* ПОЛЗУНОК — WEBKIT (Chrome, Safari, Edge) */
 .slider-line input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -557,6 +352,7 @@ body {
     box-shadow: 0 3px 12px rgba(79, 195, 247, 0.7);
 }
 
+/* ПОЛЗУНОК — FIREFOX */
 .slider-line input[type="range"]::-moz-range-thumb {
     width: 22px;
     height: 22px;
@@ -567,6 +363,7 @@ body {
     box-shadow: 0 2px 8px rgba(79, 195, 247, 0.5);
 }
 
+/* ЗНАЧЕНИЕ СПРАВА ОТ СЛАЙДЕРА */
 .slider-value {
     font-size: 13px;
     color: #0EA5E9;
@@ -575,6 +372,7 @@ body {
     text-align: right;
 }
 
+/* КНОПКА "ПРИМЕНИТЬ" */
 .filter-btn {
     display: block;
     width: 100%;
@@ -587,16 +385,16 @@ body {
     font-size: 14px;
     font-family: inherit;
     cursor: pointer;
-    letter-spacing: 0.3px;
-    outline: none;
     text-align: center;
     transition: background 0.2s ease, transform 0.1s ease;
 }
 
 .filter-btn:hover { background: #cbd5e1; }
 .filter-btn:active { background: #b8c4d4; transform: scale(0.98); }
-.filter-btn:focus { box-shadow: 0 0 0 3px rgba(79, 195, 247, 0.25); }
 
+/* ============================================
+   СЕТКА КАРТОЧЕК
+   ============================================ */
 .grid-scroll-area {
     flex: 1;
     overflow-y: auto;
@@ -615,44 +413,83 @@ body {
     padding-bottom: 8px;
 }
 
-.grid-card {
-    background: var(--bg-white);
+.grid-card-wrapper {
+    background: #ffffff;
     border-radius: 16px;
     overflow: hidden;
-    text-decoration: none;
-    color: var(--text-dark);
-    transition: all 0.3s ease;
+    border: 1px solid #e8ecf1;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
 }
 
-.grid-card:hover {
+.grid-card-wrapper:hover {
     transform: translateY(-4px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-    border-color: var(--accent);
+    border-color: #4fc3f7;
 }
 
-.grid-card img { width: 100%; height: 120px; object-fit: cover; display: block; }
-.grid-card .card-info { padding: 10px 12px 12px 12px; }
+.grid-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    flex: 1;
+}
 
-.grid-card .card-info h4 {
+.grid-card-link img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+}
+
+.grid-card-link .card-info {
+    padding: 10px 12px 8px 12px;
+}
+
+.grid-card-link .card-info h4 {
     font-size: 12px;
     font-weight: 600;
     margin-bottom: 4px;
+    color: #1a1a2e;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.grid-card .card-info .meta {
+.grid-card-link .card-info .meta {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 11px;
-    color: var(--text-gray);
+    color: #8e9eab;
 }
 
-.grid-card .card-info .likes { color: #ff6b81; font-weight: 600; }
+.grid-card-link .card-info .likes {
+    color: #ff6b81;
+    font-weight: 600;
+}
+
+/* КНОПКА УДАЛИТЬ */
+.delete-form { padding: 0 12px 12px 12px; }
+
+.delete-btn {
+    width: 100%;
+    padding: 8px;
+    background: #e2e8f0;
+    color: #1a1a2e;
+    border: none;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+    font-family: inherit;
+}
+
+.delete-btn:hover { background: #cbd5e1; }
+.delete-btn:active { background: #b8c4d4; transform: scale(0.98); }
 
 /* ============================================
    АДАПТАЦИЯ
@@ -670,42 +507,9 @@ body {
     .bottom-nav a { font-size: 12px; padding: 6px 12px; }
 
     .feed-card { width: 100%; height: 500px; }
-
-    .feed-card .patient-text-top {
-        bottom: 230px;
-        right: 12px;
-        padding: 8px 10px;
-        max-width: 140px;
-    }
-
-    .feed-card .patient-name { font-size: 13px; }
-    .feed-card .patient-details span { font-size: 11px; }
-
-    .feed-card .right-icons { bottom: 90px; right: 12px; gap: 8px; }
-
-    .feed-card .like-circle,
-    .feed-card .next-circle { width: 44px; height: 44px; }
-
-    .feed-card .like-circle .like-icon { font-size: 15px; }
-    .feed-card .like-circle .like-count { font-size: 9px; }
-    .feed-card .next-circle .next-icon { font-size: 20px; }
-
-    .feed-card .text-bottom {
-        padding: 10px 12px;
-        bottom: 16px;
-        left: 12px;
-        right: 12px;
-    }
-
-    .feed-card .text-title { font-size: 14px; }
-    .feed-card .text-description { font-size: 11px; }
-
     .add-form { max-width: 100%; padding: 14px; }
-    .add-form .media-box { padding: 16px 12px; min-height: 80px; }
-    .add-form .media-box .media-icon { font-size: 20px; }
-
-    .grid-card img { height: 100px; }
     .grid-container { gap: 10px; }
+    .grid-card-link img { height: 100px; }
 
     .status-bar { padding: 10px 3px 8px 3px; font-size: 14px; }
     .status-bar .time { font-size: 14px; }
