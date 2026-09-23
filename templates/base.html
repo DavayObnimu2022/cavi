@@ -8,7 +8,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- СТАТУС БАР -->
         <div class="status-bar">
             <span class="time">9:41</span>
             <div class="status-icons">
@@ -29,12 +28,10 @@
             </div>
         </div>
 
-        <!-- ОБЛАСТЬ КОНТЕНТА (БЕЗ CAVI Мониторинг) -->
         <div class="content-area">
             {% block content %}{% endblock %}
         </div>
 
-        <!-- НИЖНЯЯ ПАНЕЛЬ -->
         <div class="bottom-nav">
             <a href="/" class="{% if request.url.path == '/' %}active{% endif %}">Лента</a>
             <a href="/add" class="{% if request.url.path == '/add' %}active{% endif %}">Добавление</a>

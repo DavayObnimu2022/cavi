@@ -5,60 +5,52 @@
     <div class="add-form">
         <div class="add-header">Добавление</div>
         
-        <!-- ИЗОБРАЖЕНИЕ И ВИДЕО -->
-        <div class="media-vertical">
-            <div class="media-box">
-                <div class="media-icon">🖼️</div>
-                <span>Изображение</span>
-            </div>
-            <div class="media-box">
-                <div class="media-icon">🎬</div>
-                <span>Видео</span>
-            </div>
-        </div>
+        <!-- ИЗОБРАЖЕНИЕ -->
+        <label class="media-box" style="display:flex; flex-direction:column; justify-content:center; align-items:center; background:#ffffff; border-radius:14px; padding:20px 14px; width:100%; min-height:100px; text-align:center; border:1px solid #e8ecf1; box-shadow:0 2px 8px rgba(0,0,0,0.04); cursor:pointer; margin-bottom:12px;">
+            <div style="font-size:26px; margin-bottom:6px; color:#4fc3f7;">🖼️</div>
+            <span style="font-weight:500; color:#1a1a2e; font-size:14px;">Изображение</span>
+            <span id="image-name" style="display:block; margin-top:6px; font-size:12px; color:#8e9eab;">Файл не выбран</span>
+            <input type="file" id="image-upload" accept="image/*"
+                   style="position:absolute; width:1px; height:1px; opacity:0; overflow:hidden; pointer-events:none;"
+                   onchange="document.getElementById('image-name').textContent = this.files[0] ? this.files[0].name : 'Файл не выбран';">
+        </label>
+        
+        <!-- ВИДЕО -->
+        <label class="media-box" style="display:flex; flex-direction:column; justify-content:center; align-items:center; background:#ffffff; border-radius:14px; padding:20px 14px; width:100%; min-height:100px; text-align:center; border:1px solid #e8ecf1; box-shadow:0 2px 8px rgba(0,0,0,0.04); cursor:pointer; margin-bottom:20px;">
+            <div style="font-size:26px; margin-bottom:6px; color:#4fc3f7;">🎬</div>
+            <span style="font-weight:500; color:#1a1a2e; font-size:14px;">Видео</span>
+            <span id="video-name" style="display:block; margin-top:6px; font-size:12px; color:#8e9eab;">Файл не выбран</span>
+            <input type="file" id="video-upload" accept="video/*"
+                   style="position:absolute; width:1px; height:1px; opacity:0; overflow:hidden; pointer-events:none;"
+                   onchange="document.getElementById('video-name').textContent = this.files[0] ? this.files[0].name : 'Файл не выбран';">
+        </label>
         
         {% if service %}
-            <!-- ВОЗРАСТНАЯ ГРУППА -->
-            <div class="field-group">
-                <label>Возрастная группа</label>
-                <select class="field-select">
-                    <option value="20-30 лет" {% if service.age_group == "20-30 лет" %}selected{% endif %}>20-30 лет</option>
-                    <option value="30-40 лет" {% if service.age_group == "30-40 лет" %}selected{% endif %}>30-40 лет</option>
-                    <option value="35-45 лет" {% if service.age_group == "35-45 лет" %}selected{% endif %}>35-45 лет</option>
-                    <option value="40-50 лет" {% if service.age_group == "40-50 лет" %}selected{% endif %}>40-50 лет</option>
-                    <option value="45-55 лет" {% if service.age_group == "45-55 лет" %}selected{% endif %}>45-55 лет</option>
-                    <option value="50-60 лет" {% if service.age_group == "50-60 лет" %}selected{% endif %}>50-60 лет</option>
-                    <option value="55-65 лет" {% if service.age_group == "55-65 лет" %}selected{% endif %}>55-65 лет</option>
-                    <option value="60+ лет" {% if service.age_group == "60+ лет" %}selected{% endif %}>60+ лет</option>
-                </select>
+            <div class="field-group" style="margin-bottom:16px;">
+                <label style="display:block; font-size:13px; color:#8e9eab; margin-bottom:6px; font-weight:500;">Возраст</label>
+                <input type="number" 
+                       placeholder="Введите возраст" 
+                       value="{{ service.age }}"
+                       style="display:block; width:100%; background:#ffffff; color:#1a1a2e; font-size:14px; font-family:inherit; padding:14px 16px; border:1px solid #e8ecf1; border-radius:14px; outline:none; box-shadow:0 2px 8px rgba(0,0,0,0.04); min-height:50px; -webkit-appearance:none; appearance:none;">
             </div>
 
-            <!-- АРТЕРИАЛЬНАЯ ГИПЕРТЕНЗИЯ - ТЕКСТ ВНУТРИ ПОЛЯ -->
-            <div class="field-group toggle-group">
-                <div class="toggle-wrapper">
-                    <span class="toggle-label-text">Артериальная гипертензия</span>
-                    <label class="toggle-switch">
-                        <input type="checkbox" {% if service.hypertension == "Да" %}checked{% endif %}>
-                        <span class="toggle-slider"></span>
-                    </label>
-                </div>
+            <div class="field-group" style="margin-bottom:16px;">
+                <label style="display:block; font-size:13px; color:#8e9eab; margin-bottom:6px; font-weight:500;">Давление</label>
+                <input type="number" 
+                       placeholder="Введите давление" 
+                       value="{{ service.pressure }}"
+                       style="display:block; width:100%; background:#ffffff; color:#1a1a2e; font-size:14px; font-family:inherit; padding:14px 16px; border:1px solid #e8ecf1; border-radius:14px; outline:none; box-shadow:0 2px 8px rgba(0,0,0,0.04); min-height:50px; -webkit-appearance:none; appearance:none;">
             </div>
 
-            <!-- САХАРНЫЙ ДИАБЕТ - ТЕКСТ ВНУТРИ ПОЛЯ -->
-            <div class="field-group toggle-group">
-                <div class="toggle-wrapper">
-                    <span class="toggle-label-text">Сахарный диабет</span>
-                    <label class="toggle-switch">
-                        <input type="checkbox" {% if service.diabetes == "Да" %}checked{% endif %}>
-                        <span class="toggle-slider"></span>
-                    </label>
-                </div>
+            <div class="field-group" style="margin-bottom:16px;">
+                <label style="display:block; font-size:13px; color:#8e9eab; margin-bottom:6px; font-weight:500;">Описание</label>
+                <textarea 
+                          placeholder="Введите описание"
+                          style="display:block; width:100%; background:#ffffff; color:#1a1a2e; font-size:14px; font-family:inherit; padding:14px 16px; border:1px solid #e8ecf1; border-radius:14px; outline:none; box-shadow:0 2px 8px rgba(0,0,0,0.04); min-height:100px; resize:vertical; -webkit-appearance:none; appearance:none;">{{ service.description }}</textarea>
             </div>
         {% else %}
             <p style="color: #8e9eab; text-align: center; padding: 20px;">Нет черновиков</p>
         {% endif %}
-
-        <button class="save-btn">Сохранить</button>
     </div>
 </div>
 {% endblock %}

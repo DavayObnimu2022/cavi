@@ -1,17 +1,45 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="grid-header">
-    <h3>Плитка</h3>
+<div style="display:flex; justify-content:space-between; align-items:center; margin:12px 0 10px 0; padding:0 2px;">
+    <h3 style="color:#1a1a2e; font-size:20px; font-weight:700; margin:0;">Плитка</h3>
 </div>
 
-<div class="filter-row">
-    <form method="get" action="/grid" class="filter-form-full">
-        <div class="filter-wrapper-full">
-            <span class="search-icon-full">🔍</span>
-            <input type="text" name="filter_age" class="filter-input-full" 
-                   placeholder="Возраст > 50" 
-                   value="{{ filter_age or '' }}">
+<div style="margin-bottom:14px; width:100%;">
+    <form method="get" action="/grid" style="width:100%; margin:0;">
+        <div style="background:#ffffff; border-radius:16px; padding:18px; border:1px solid #e8ecf1; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+            
+            <div style="text-align:center; font-size:14px; color:#1a1a2e; font-weight:600; margin-bottom:16px;">
+                Возраст: 
+                <span id="min-val" style="display:inline-block; background:#e8f6fd; color:#0EA5E9; padding:2px 10px; border-radius:10px; font-weight:700; min-width:30px; text-align:center;">{{ filter_age_min }}</span>
+                – 
+                <span id="max-val" style="display:inline-block; background:#e8f6fd; color:#0EA5E9; padding:2px 10px; border-radius:10px; font-weight:700; min-width:30px; text-align:center;">{{ filter_age_max }}</span>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+                <span style="font-size:13px; color:#8e9eab; font-weight:600; min-width:24px;">От</span>
+                <div style="position:relative; flex:1; height:24px; display:flex; align-items:center;">
+                    <input type="range" name="filter_age_min" min="0" max="100" value="{{ filter_age_min }}" 
+                           style="width:100%; height:6px; background:#e8ecf1; border-radius:3px; outline:none; -webkit-appearance:none; appearance:none; margin:0; cursor:pointer;"
+                           oninput="document.getElementById('min-val').textContent = this.value; document.getElementById('min-val-2').textContent = this.value;">
+                </div>
+                <span id="min-val-2" style="font-size:13px; color:#0EA5E9; font-weight:700; min-width:30px; text-align:right;">{{ filter_age_min }}</span>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:18px;">
+                <span style="font-size:13px; color:#8e9eab; font-weight:600; min-width:24px;">До</span>
+                <div style="position:relative; flex:1; height:24px; display:flex; align-items:center;">
+                    <input type="range" name="filter_age_max" min="0" max="100" value="{{ filter_age_max }}"
+                           style="width:100%; height:6px; background:#e8ecf1; border-radius:3px; outline:none; -webkit-appearance:none; appearance:none; margin:0; cursor:pointer;"
+                           oninput="document.getElementById('max-val').textContent = this.value; document.getElementById('max-val-2').textContent = this.value;">
+                </div>
+                <span id="max-val-2" style="font-size:13px; color:#0EA5E9; font-weight:700; min-width:30px; text-align:right;">{{ filter_age_max }}</span>
+            </div>
+
+            <button type="submit" 
+                    style="display:block; width:100%; padding:13px 20px; background:#e2e8f0; color:#1a1a2e; border:none; border-radius:28px; font-weight:600; font-size:14px; font-family:inherit; cursor:pointer; letter-spacing:0.3px; outline:none; text-align:center;">
+                Применить
+            </button>
         </div>
     </form>
 </div>
@@ -24,8 +52,8 @@
                 <div class="card-info">
                     <h4>{{ service.title }}</h4>
                     <div class="meta">
-                        <span>{{ service.age_group }}</span>
-                        <span class="likes">❤️ {{ service.likes }}</span>
+                        <span>Возраст: {{ service.age }}</span>
+                        <span class="likes">❤️ {{ service.likes|length }}</span>
                     </div>
                 </div>
             </a>
@@ -36,4 +64,28 @@
         {% endfor %}
     </div>
 </div>
+
+<style>
+    /* Только для ползунков — инлайн не работает для ::-webkit-slider-thumb */
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 22px;
+        height: 22px;
+        background: #4fc3f7;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 3px solid #ffffff;
+        box-shadow: 0 2px 8px rgba(79, 195, 247, 0.5);
+    }
+    input[type="range"]::-moz-range-thumb {
+        width: 22px;
+        height: 22px;
+        background: #4fc3f7;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 3px solid #ffffff;
+        box-shadow: 0 2px 8px rgba(79, 195, 247, 0.5);
+    }
+</style>
 {% endblock %}
