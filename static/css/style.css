@@ -35,7 +35,7 @@ body {
    ============================================ */
 .container {
     width: 380px;
-    height: 780px;
+    height: min(780px, 100dvh);
     background-color: var(--bg-white);
     border-radius: 30px;
     padding: 0 15px 75px;
@@ -292,6 +292,38 @@ body {
    ============================================ */
 
 /* СТРОКА СЛАЙДЕРА */
+/* ============================================
+   ДВА ОТДЕЛЬНЫХ СЛАЙДЕРА (ОТ / ДО)
+   ============================================ */
+/* ============================================
+   ДВА ОТДЕЛЬНЫХ СЛАЙДЕРА (ОТ / ДО)
+   ============================================ */
+
+/* КАРТОЧКА ФИЛЬТРА */
+.filter-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 18px;
+    border: 1px solid #e8ecf1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* МЕТКА ВОЗРАСТ */
+.filter-labels {
+    text-align: center;
+    font-size: 14px;
+    color: #1a1a2e;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.filter-labels #min-val,
+.filter-labels #max-val {
+    color: #0EA5E9;
+    font-weight: 700;
+}
+
+/* СТРОКА СЛАЙДЕРА */
 .slider-row {
     display: flex;
     align-items: center;
@@ -372,7 +404,7 @@ body {
     text-align: right;
 }
 
-/* КНОПКА "ПРИМЕНИТЬ" */
+/* КНОПКА ПРИМЕНИТЬ */
 .filter-btn {
     display: block;
     width: 100%;

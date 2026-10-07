@@ -1,8 +1,8 @@
-"""init patient_groups, users and likes
+"""new schema
 
-Revision ID: 465c7ac23f81
+Revision ID: fb7b4cb131f1
 Revises: 
-Create Date: 2026-09-23 09:51:52.593515
+Create Date: 2026-10-07 07:57:52.143114
 
 """
 from typing import Sequence, Union
@@ -11,8 +11,7 @@ from alembic import op
 import sqlalchemy as sa
 
 
-# revision identifiers, used by Alembic.
-revision: str = '465c7ac23f81'
+revision: str = 'fb7b4cb131f1'
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None

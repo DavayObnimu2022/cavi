@@ -6,12 +6,15 @@
 </div>
 
 <div class="filter-row">
-    <form method="get" action="/grid" class="filter-form-full">
+    <form method="get" action="/grid_patient_groups" class="filter-form-full">
         <div class="filter-card">
+
+            <!-- Метка с текущими значениями -->
             <div class="filter-labels">
-                <span>Возраст: <span id="min-val">{{ filter_age_min }}</span> – <span id="max-val">{{ filter_age_max }}</span></span>
+                Возраст: <span id="min-val">{{ filter_age_min }}</span> – <span id="max-val">{{ filter_age_max }}</span>
             </div>
 
+            <!-- СЛАЙДЕР "ОТ" -->
             <div class="slider-row">
                 <span class="slider-label">От</span>
                 <div class="slider-line">
@@ -21,6 +24,7 @@
                 <span class="slider-value" id="min-val-2">{{ filter_age_min }}</span>
             </div>
 
+            <!-- СЛАЙДЕР "ДО" -->
             <div class="slider-row">
                 <span class="slider-label">До</span>
                 <div class="slider-line">
@@ -39,7 +43,7 @@
     <div class="grid-container">
         {% for item in items %}
             <div class="grid-card-wrapper">
-                <a href="/?id={{ item.id }}" class="grid-card-link">
+                <a href="/feed_patient_groups?id={{ item.id }}" class="grid-card-link">
                     <img src="{{ item.image_url }}" alt="{{ item.title }}">
                     <div class="card-info">
                         <h4>{{ item.title }}</h4>
@@ -49,7 +53,7 @@
                         </div>
                     </div>
                 </a>
-                <form method="post" action="/grid/{{ item.id }}/delete" class="delete-form">
+                <form method="post" action="/grid_patient_groups/{{ item.id }}/delete" class="delete-form">
                     <button type="submit" class="delete-btn">Удалить</button>
                 </form>
             </div>

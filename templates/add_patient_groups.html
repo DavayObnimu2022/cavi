@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="add-wrapper">
+    <div class="add-form">
+        <div class="add-header">Добавление</div>
+
+        {% if not service %}
+            <!-- ============================================
+                 ФОРМА 1: "ДАЛЕЕ" (черновика НЕТ)
+                 ============================================ -->
+            <form method="post" action="/add_patient_groups/draft">
+
+                <!-- ФОТО -->
+                <div class="media-box" style="display:flex; flex-direction:column; justify-content:center; align-items:center; background:#ffffff; border-radius:14px; padding:14px; width:100%; text-align:center; border:1px solid #e8ecf1; box-shadow:0 2px 8px rgba(0,0,0,0.04); margin-bottom:12px;">
+                    <span style="font-weight:500; color:#1a1a2e; font-size:14px; margin-bottom:8px;">Изображение</span>
+                    <img src="{{ default_image }}" alt="Изображение"
+                         style="max-width:100%; max-height:140px; border-radius:10px; object-fit:cover; display:block;">
+                </div>
+
+                <!-- ВИДЕО -->
+                <div class="media-box" style="display:flex; flex-direction:column; justify-content:center; align-items:center; background:#ffffff; border-radius:14px; padding:14px; width:100%; text-align:center; border:1px solid #e8ecf1; box-shadow:0 2px 8px rgba(0,0,0,0.04); margin-bottom:20px;">
+                    <span style="font-weight:500; color:#1a1a2e; font-size:14px; margin-bottom:8px;">Видео</span>
+                    <video controls muted
+                           style="max-width:100%; max-height:140px; border-radius:10px; display:block;">
+                        <source src="{{ default_video }}" type="video/mp4">
+                    </video>
+                </div>
+
+                <!-- НАЗВАНИЕ -->
+                <div class="field-group">
+                    <label>Название</label>
+                    <input type="text" name="title" class="field-input" placeholder="Введите название" required
+                           style="display:block; width:100%; background:#ffffff; color:#1a1a2e; font-size:14px; padding:14px 16px; border:1px solid #e8ecf1; border-radius:14px; outline:none; min-height:50px;">
+                </div>
+
+                <!-- КНОПКА ДАЛЕЕ -->
+                <button type="submit"
+                        style="display:block; width:100%; padding:13px 20px; background:#e2e8f0; color:#1a1a2e; border:none; border-radius:28px; font-weight:600; font-size:14px; cursor:pointer; margin-top:10px;">
+                    Далее
+                </button>
+            </form>
+        {% else %}
+            <!-- ============================================
+                 ФОРМА 2: "ОПУБЛИКОВАТЬ" (черновик ЕСТЬ)
+                 ============================================ -->
+            <p style="color:#8e9eab; font-size:14px; text-align:center; margin-bottom:16px;">
+                Черновик: {{ service.title }}
+            </p>
+
+            <form method="post" action="/add_patient_groups/publish">
+
+                <!-- ФОТО -->
+                <div class="media-box" style="display:flex; flex-direction:column; justify-content:center; align-items:center; background:#ffffff; border-radius:14px; padding:14px; width:100%; text-align:center; border:1px solid #e8ecf1; box-shadow:0 2px 8px rgba(0,0,0,0.04); margin-bottom:12px;">
+                    <span style="font-weight:500; color:#1a1a2e; font-size:14px; margin-bottom:8px;">Изображение</span>
+                    <img src="{{ service.image_url or default_image }}" alt="Изображение"
+                         style="max-width:100%; max-height:140px; border-radius:10px; object-fit:cover; display:block;">
+                </div>
+
+                <!-- ВИДЕО -->
+                <div class="media-box" style="display:flex; flex-direction:column; justify-content:center; align-items:center; background:#ffffff; border-radius:14px; padding:14px; width:100%; text-align:center; border:1px solid #e8ecf1; box-shadow:0 2px 8px rgba(0,0,0,0.04); margin-bottom:20px;">
+                    <span style="font-weight:500; color:#1a1a2e; font-size:14px; margin-bottom:8px;">Видео</span>
+                    <video controls muted
+                           style="max-width:100%; max-height:140px; border-radius:10px; display:block;">
+                        <source src="{{ service.video_url or default_video }}" type="video/mp4">
+                    </video>
+                </div>
+
+                <!-- ОПИСАНИЕ -->
+                <div class="field-group">
+                    <label>Краткое описание</label>
+                    <textarea name="description" class="field-textarea" placeholder="Введите описание" required
+                              style="display:block; width:100%; background:#ffffff; color:#1a1a2e; font-size:14px; padding:14px 16px; border:1px solid #e8ecf1; border-radius:14px; outline:none; min-height:100px; resize:vertical;">{{ service.description }}</textarea>
+                </div>
+
+                <!-- ВОЗРАСТ -->
+                <div class="field-group">
+                    <label>Возраст</label>
+                    <input type="number" name="age" class="field-input" placeholder="Введите возраст"
+                           value="{{ service.age or '' }}" required
+                           style="display:block; width:100%; background:#ffffff; color:#1a1a2e; font-size:14px; padding:14px 16px; border:1px solid #e8ecf1; border-radius:14px; outline:none; min-height:50px;">
+                </div>
+
+                <!-- ДАВЛЕНИЕ -->
+                <div class="field-group">
+                    <label>Давление</label>
+                    <input type="number" name="pressure" class="field-input" placeholder="Введите давление"
+                           value="{{ service.pressure or '' }}" required
+                           style="display:block; width:100%; background:#ffffff; color:#1a1a2e; font-size:14px; padding:14px 16px; border:1px solid #e8ecf1; border-radius:14px; outline:none; min-height:50px;">
+                </div>
+
+                <!-- КНОПКА ОПУБЛИКОВАТЬ -->
+                <button type="submit"
+                        style="display:block; width:100%; padding:13px 20px; background:#e2e8f0; color:#1a1a2e; border:none; border-radius:28px; font-weight:600; font-size:14px; cursor:pointer; margin-top:10px;">
+                    Опубликовать
+                </button>
+            </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
