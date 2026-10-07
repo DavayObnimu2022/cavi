@@ -8,3 +8,5 @@ asyncpg
 pydantic-settings
 python-dotenv
 python-multipart
+minio
+pydantic
